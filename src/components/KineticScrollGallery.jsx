@@ -58,11 +58,12 @@ const Card = ({ title, description, category, i, src, id, onCardClick }) => {
 
 // CardsParallax component
 const CardsParallax = ({ items, onCardClick }) => {
+  const limitedItems = Array.isArray(items) ? items.slice(0, 9) : [];
   return (
     <div className="min-h-screen">
-      {items.map((project, i) => {
-        return <Card key={`p_${i}`} {...project} i={i} onCardClick={onCardClick} />;
-      })}
+      {limitedItems.map((project, i) => (
+        <Card key={`p_${i}`} {...project} i={i} onCardClick={onCardClick} />
+      ))}
     </div>
   );
 };
@@ -132,7 +133,7 @@ const KineticScrollGallery = () => {
           return {
             id: item.id,
             title: item.name || 'Untitled Project',
-            description: item.description || 'No description available',
+            description: item.description || '',
             category: item.category_name || 'Portfolio',
             src: primaryImage ? primaryImage.image : null,
           };

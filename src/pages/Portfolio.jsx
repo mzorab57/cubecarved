@@ -75,7 +75,7 @@ export default function Portfolio() {
               <p className="mt-6 text-gray-500" data-aos="fade-up">Loading portfolio...</p>
             )}
             {error && (
-              <p className="mt-6 text-red-600" data-aos="fade-up">{error}</p>
+              <p className="mt-6 " data-aos="fade-up">{error}</p>
             )}
           </div>
 
@@ -86,7 +86,10 @@ export default function Portfolio() {
                 data-aos="fade-up"
                 data-aos-delay={idx * 100}
                 className="group grayscale hover:grayscale-0 transition duration-500 relative  overflow-hidden  shadow-lg hover:shadow-2xl  cursor-pointer"
-                onClick={() => navigate(`/portfolio/${project.id}`)}
+                onClick={() => {
+                  navigate(`/portfolio/${project.id}`);
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
               >
                 <div className="aspect-[4/3] overflow-hidden bg-gray-200">
                   <img
