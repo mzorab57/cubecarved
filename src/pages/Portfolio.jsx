@@ -72,7 +72,7 @@ export default function Portfolio() {
             </div>
 
             {loading && (
-              <p className="mt-6 text-gray-500" data-aos="fade-up">Loading portfolio...</p>
+              <p className="mt-6 text-gray-500" data-aos="fade-up">Loading portfolio.....</p>
             )}
             {error && (
               <p className="mt-6 " data-aos="fade-up">{error}</p>
