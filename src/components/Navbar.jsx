@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Home, Briefcase, Image, Users, Mail } from 'lucide-react';
+import { companyName } from '../data/siteData';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -55,7 +56,6 @@ export default function Navbar() {
     { to: '/about', label: 'About', icon: Users },
     { to: '/portfolio', label: 'Portfolio', icon: Image },
     { to: '/services', label: 'Services', icon: Briefcase },
-    { to: '/course', label: 'Course', icon: Users },
     { to: '/contact', label: 'Contact', icon: Mail },
   ];
 
@@ -73,13 +73,13 @@ export default function Navbar() {
             <div className="    flex items-center justify-center transform group-hover:rotate-6 transition-transform duration-300">
              <img src={`${
               scrolled ? '/logo.png' : '/logo.png'
-            }`} alt="Nergiz Khalida" className="w-24 md:w-28 lg:w-32" />
+            }`} alt={companyName} className="w-24 md:w-28 lg:w-32" />
             </div>
            
           </Link>
 
           <div className="hidden md:flex items-center space-x-1">
-            {navLinks.map(({ to, label, icon: Icon }) => (
+            {navLinks.map(({ to, label }) => (
               <Link
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 key={to}
@@ -125,7 +125,7 @@ export default function Navbar() {
             <X className="w-7 h-7 font-light" />
           </button>
           
-          {navLinks.map(({ to, label, icon: Icon }, index) => (
+          {navLinks.map(({ to, label }, index) => (
             <Link
               onClick={() => {
                 setIsOpen(false);

@@ -5,15 +5,13 @@ const usePortfolioStore = create((set) => ({
   items: [],
   loading: false,
   error: null,
-  filter: { category: 'All' },
+  filter: { category: 'All', subcategory: 'All' },
 
-  fetchAll: async (params) => {
+  fetchAll: async () => {
     set({ loading: true, error: null });
     try {
-      const data = await getPortfolios(params);
+      const data = await getPortfolios();
       const items = Array.isArray(data) ? data : [];
-      console.log(items);
-      console.log("items");
       set({ items, loading: false });
     } catch (err) {
       const message = err?.response?.data?.error || err?.message || 'Failed to fetch portfolio';
@@ -21,7 +19,21 @@ const usePortfolioStore = create((set) => ({
     }
   },
 
-  setFilter: (category) => set({ filter: { category } }),
+  setCategory: (category) =>
+    set({
+      filter: {
+        category,
+        subcategory: 'All',
+      },
+    }),
+
+  setSubcategory: (subcategory) =>
+    set((state) => ({
+      filter: {
+        ...state.filter,
+        subcategory,
+      },
+    })),
 }));
 
 export default usePortfolioStore;

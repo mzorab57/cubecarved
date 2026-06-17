@@ -1,6 +1,7 @@
 import { Mail, MapPin, Phone, Instagram, Facebook, Linkedin } from 'lucide-react';
 import { useEffect } from 'react';
 import useContactsStore from '../store/contacts';
+import { companyName } from '../data/siteData';
 
 export default function Footer() {
   const { items, fetchAll } = useContactsStore();
@@ -18,11 +19,11 @@ export default function Footer() {
            <div className="w-fit scale-125  ml-5 mb-5  transform group-hover:rotate-6 transition-transform duration-300">
              <img src={`${
                 '/logo.png'
-            }`} alt="Nergiz Khalida" className="w-20 place-self-start" />
+            }`} alt={companyName} className="w-20 place-self-start" />
             </div>
             <p className="text-gray-400 leading-relaxed">
-              Complete interior design services with full attention to every detail.
-              From concept to completion, we bring your vision to life beautifully.
+              Integrated architectural, engineering, and execution services that connect creativity,
+              technical precision, and dependable delivery.
             </p>
           </div>
 
@@ -34,18 +35,18 @@ export default function Footer() {
                 className="flex items-start space-x-3 text-gray-400 hover:text-gray-500 transition-colors group"
               >
                 <Mail className="w-5 h-5 mt-0.5 group-hover:scale-110 transition-transform" />
-                <span className="break-all">{contact?.email || 'nergiz.designer@gmail.com'}</span>
+                <span className="break-all">{contact?.email || 'info@cubecarved.com'}</span>
               </a>
               <div className="flex items-start space-x-3 text-gray-400">
                 <MapPin className="w-5 h-5 mt-0.5 flex-shrink-0" />
-                <span>{contact?.address || 'Erbil, Andaziyaran - Villa 60'}</span>
+                <span>{contact?.address || 'Erbil, Iraq'}</span>
               </div>
               <a
                 href={contact?.phone ? `tel:${contact.phone}` : '#'}
                 className="flex items-start space-x-3 text-gray-400 hover:text-gray-500 transition-colors group"
               >
                 <Phone className="w-5 h-5 mt-0.5 group-hover:scale-110 transition-transform" />
-                <span className="break-all">{contact?.phone || '+964 750 391 3540'}</span>
+                <span className="break-all">{contact?.phone || '+964 750 000 0000'}</span>
               </a>
             </div>
           </div>
@@ -54,35 +55,32 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-6 text-gray-500">Follow Us</h3>
             <div className="flex space-x-4">
               <a
-                href="https://www.instagram.com/nergiz.khalid?igsh=eHFiaWk4bXdieGdn"
+                href={contact?.social?.instagram || '#'}
                 className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-600 transition-all duration-300 hover:scale-110 hover:rotate-6"
               >
                 <Instagram className="w-5 h-5" />
               </a>
               <a
-                href="https://www.facebook.com/share/17RzMLCaMT/"
+                href={contact?.social?.facebook || '#'}
                 className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-600 transition-all duration-300 hover:scale-110 hover:rotate-6"
               >
                 <Facebook className="w-5 h-5" />
               </a>
-              
+              <a
+                href={contact?.social?.linkedin || '#'}
+                className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-600 transition-all duration-300 hover:scale-110 hover:rotate-6"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
             </div>
           </div>
         </div>
 
 {/* Footer Bottom */}
         <div className="mt-12 pt-6 border-t border-gray-700 text-center text-gray-400">
-          <p>&copy; {new Date().getFullYear()} Nergiz Khalida. all rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} {companyName}. all rights reserved.</p>
           <p className="mt-2">
-            Powered by{" "}
-            <a 
-              href="https://wa.me/96407701411893"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-500 hover:underline"
-            >
-              Al-Code
-            </a>
+            Built as a static presentation website for {companyName}.
           </p>
         </div>
       

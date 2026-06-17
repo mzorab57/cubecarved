@@ -1,6 +1,7 @@
 import { Heart, Target, Eye, Award, Users, Sparkles } from 'lucide-react';
 import AnimatedText from '../components/AnimatedText';
 import AboutNergiz from '../components/AboutNergiz';
+import { companyName, siteContent } from '../data/siteData';
 
 export default function About() {
   return (
@@ -29,37 +30,19 @@ export default function About() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Heart,
-                title: 'Passion',
-                description: 'We pour our heart and soul into every project, treating each space as if it were our own',
-                color: '',
-                colorIcon: ''
-              },
-              {
-                icon: Target,
-                title: 'Precision',
-                description: 'Meticulous attention to detail ensures flawless execution from start to finish',
-                color: '',
-                colorIcon: ''
-              },
-              {
-                icon: Sparkles,
-                title: 'Innovation',
-                description: 'We embrace creativity and stay ahead of design trends to deliver unique solutions',
-                color: '',
-                colorIcon: ''
-              }
-            ].map((value, idx) => (
+            {siteContent.coreValues.map((value, idx) => {
+              const icons = [Heart, Target, Sparkles];
+              const Icon = icons[idx] || Heart;
+
+              return (
               <div
-                key={idx}
+                key={value.title}
                 data-aos="fade-up"
                 data-aos-delay={idx * 100}
                 className={`group  bg-white/5 hover:bg-white/10 border border-gray-700 rounded p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2`}
               >
-                <div className={`w-16 h-16 bg-gradient-to-br ${value.colorIcon} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg`}>
-                  <value.icon className="w-8 h-8 text-white font-light" />
+                <div className="w-16 h-16 bg-gradient-to-br rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg bg-white/10">
+                  <Icon className="w-8 h-8 text-white font-light" />
                 </div>
                 <h3 className="text-2xl  text-gray-100 mb-4 font-light">
                   {value.title}
@@ -68,7 +51,8 @@ export default function About() {
                   {value.description}
                 </p>
               </div>
-            ))}
+            );
+            })}
           </div>
         </div>
       </section>
@@ -89,12 +73,16 @@ export default function About() {
                 <Target className="w-8 h-8 text-white hidden lg:block" />
               </div>
               <h3 className="text-3xl font-light mb-6">Our Mission</h3>
-              <p className="text-gray-300 text-lg leading-relaxed font-light">
-                To transform spaces into extraordinary environments that inspire, comfort, and reflect
-                the unique personality of each client. We are committed to delivering exceptional
-                design solutions that exceed expectations through creativity, craftsmanship, and
-                unwavering dedication to quality.
-              </p>
+              <div className="space-y-5">
+                {siteContent.mission.map((item) => (
+                  <div key={item.title}>
+                    <h4 className="text-xl text-white mb-2">{item.title}</h4>
+                    <p className="text-gray-300 text-lg leading-relaxed font-light">
+                      {item.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
 
             <div data-aos="fade-left" data-aos-duration="1000" className=" rounded px-1 text-center text-white ">
@@ -102,12 +90,16 @@ export default function About() {
                 <Eye className="w-8 h-8 text-white hidden lg:block" />
               </div>
               <h3 className="text-3xl font-light mb-6">Our Vision</h3>
-              <p className="text-amber-50 text-lg leading-relaxed font-light">
-                To be recognized as the leading interior design firm that sets the standard for
-                innovation, quality, and client satisfaction. We envision a future where every space
-                we touch becomes a masterpiece that stands the test of time and continues to bring
-                joy to those who experience it.
-              </p>
+              <div className="space-y-5">
+                {siteContent.vision.map((item) => (
+                  <div key={item.title}>
+                    <h4 className="text-xl text-white mb-2">{item.title}</h4>
+                    <p className="text-amber-50 text-lg leading-relaxed font-light">
+                      {item.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -122,32 +114,40 @@ export default function About() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Award,
-                title: 'Proven Excellence',
-                description: 'Years of experience delivering outstanding results'
-              },
-              {
-                icon: Users,
-                title: 'Client-Focused',
-                description: 'Your satisfaction is our top priority in every project'
-              },
-              {
-                icon: Sparkles,
-                title: 'Complete Service',
-                description: 'End-to-end solutions from concept to completion'
-              }
-            ].map((reason, idx) => (
+            {siteContent.whyChooseUs.map((reason, idx) => {
+              const icons = [Award, Users, Sparkles];
+              const Icon = icons[idx] || Award;
+
+              return (
               <div
-                key={idx}
+                key={reason.title}
                 data-aos="fade-up"
                 data-aos-delay={idx * 100}
                 className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:bg-white/10 transition-all duration-300"
               >
-                <reason.icon className="w-12 h-12 text-gray-400 mb-4" />
+                <Icon className="w-12 h-12 text-gray-400 mb-4" />
                 <h3 className="text-xl font-light mb-3">{reason.title}</h3>
                 <p className="text-gray-400 leading-relaxed font-light">{reason.description}</p>
+              </div>
+            );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <AnimatedText
+            text={`${companyName} Future Goals`}
+            className="text-4xl sm:text-5xl font-light text-gray-100 mb-8"
+          />
+          <p className="text-lg text-gray-300 leading-relaxed mb-10">
+            {siteContent.futureGoals.description}
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {siteContent.futureGoals.items.map((goal) => (
+              <div key={goal} className="bg-white/5 border border-white/10 p-6 rounded-2xl">
+                <p className="text-xl font-light text-white">{goal}</p>
               </div>
             ))}
           </div>

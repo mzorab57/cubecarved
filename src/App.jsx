@@ -13,7 +13,6 @@ import Portfolio from './pages/Portfolio';
 import ProjectDetail from './pages/ProjectDetail';
 import Contact from './pages/Contact';
 import Footer from './components/Footer';
-import Course from './pages/Course';
 
 function App() {
   useEffect(() => {
@@ -33,7 +32,6 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/course" element={<Course />} />
           <Route path="/portfolio/:id" element={<ProjectDetail />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>

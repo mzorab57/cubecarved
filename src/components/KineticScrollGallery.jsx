@@ -1,18 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { getPortfolios } from "../lib/portfolioApi";
+import { useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { portfolioItems } from '../data/siteData';
+import { isVideoAsset, toAssetUrl } from '../lib/media';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://nergizkhalid.com/api-nergiz';
-
-// Card component
-const Card = ({ title, description, category, i, src, id, onCardClick }) => {
-  const getImageSrc = (img) => {
-    if (!img) return '/images/about.png'; // fallback image from public folder
-    if (img.startsWith('http')) return img;
-    if (img.startsWith('/')) return img; // already absolute path
-    // For API images, construct full URL
-    return `${API_BASE_URL}/${img}`;
-  };
+const Card = ({ title, description, category, src, id, onCardClick }) => {
+  const isVideo = isVideoAsset(src);
 
   return (
     <div className="h-screen flex items-center justify-center sticky top-0 md:p-0 px-4">
@@ -42,21 +34,31 @@ const Card = ({ title, description, category, i, src, id, onCardClick }) => {
           {description}
         </div>
         <div className="absolute inset-0 z-0 bg-gray-800">
-          <img
-            className="w-full h-full rounded object-cover opacity-80 brightness-50"
-            src={getImageSrc(src)}
-            alt={`${title} - ${category} project image`}
-            onError={(e) => {
-              e.target.style.display = 'none';
-            }}
-          />
+          {isVideo ? (
+            <video
+              className="w-full h-full rounded object-cover opacity-80 brightness-50"
+              src={toAssetUrl(src)}
+              autoPlay
+              loop
+              muted
+              playsInline
+            />
+          ) : (
+            <img
+              className="w-full h-full rounded object-cover opacity-80 brightness-50"
+              src={toAssetUrl(src)}
+              alt={`${title} - ${category} project`}
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+              }}
+            />
+          )}
         </div>
       </div>
     </div>
   );
 };
 
-// CardsParallax component
 const CardsParallax = ({ items, onCardClick }) => {
   const limitedItems = Array.isArray(items) ? items.slice(0, 9) : [];
   return (
@@ -68,101 +70,29 @@ const CardsParallax = ({ items, onCardClick }) => {
   );
 };
 
-// Main component export
 const KineticScrollGallery = () => {
   const navigate = useNavigate();
-  const [portfolioItems, setPortfolioItems] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
-  // Handle card click navigation
   const handleCardClick = (projectId) => {
-    // Scroll to top before navigation
     window.scrollTo({ top: 0, behavior: 'smooth' });
     navigate(`/portfolio/${projectId}`);
   };
 
-  // Fallback data when API fails
-  const fallbackData = [
-    {
-      id: 1,
-      title: "Modern Interior Design",
-      description: "Contemporary living space with clean lines and elegant finishes",
-      category: "Interior Design",
-      src: "/images/g9.JPG",
-    },
-    {
-      id: 2,
-      title: "Classic Bedroom",
-      description: "Luxurious bedroom design with premium materials",
-      category: "Bedroom Design",
-      src: "/images/g12.JPG",
-    },
-    {
-      id: 3,
-      title: "Kitchen Design",
-      description: "Modern kitchen with functional and aesthetic elements",
-      category: "Kitchen Design",
-      src: "/images/g3.JPG",
-    },
-    {
-      id: 4,
-      title: "Living Room",
-      description: "Comfortable and stylish living space",
-      category: "Living Room",
-      src: "/images/g4.JPG",
-    },
-  ];
+  const featuredItems = useMemo(
+    () =>
+      portfolioItems
+        .filter((item) => item.featured)
+        .map((item) => ({
+          id: item.id,
+          title: item.name,
+          description: item.description,
+          category: `${item.category} / ${item.subcategory}`,
+          src: item.media[0]?.src || '/images/about.png',
+        })),
+    []
+  );
 
-  useEffect(() => {
-    const fetchPortfolioData = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        const data = await getPortfolios();
-        console.log('Fetched portfolio data:', data);
-        
-        
-        // Transform portfolio data to match card format
-        const transformedItems = data.map((item) => {
-          // Find primary image or use first image
-          const primaryImage = Array.isArray(item.images) 
-            ? (item.images.find(img => img.is_primary) || item.images[0])
-            : null;
-          
-          return {
-            id: item.id,
-            title: item.name || 'Untitled Project',
-            description: item.description || '',
-            category: item.category_name || 'Portfolio',
-            src: primaryImage ? primaryImage.image : null,
-          };
-        });
-        
-        setPortfolioItems(transformedItems);
-      } catch (err) {
-        console.error('Error fetching portfolio data:', err);
-        setError(err.message);
-        // Use fallback data when API fails
-        setPortfolioItems(fallbackData);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchPortfolioData();
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-black">
-        <div className="text-white text-xl">Loading portfolio...</div>
-      </div>
-    );
-  }
-
-  return <CardsParallax items={portfolioItems} onCardClick={handleCardClick} />;
+  return <CardsParallax items={featuredItems} onCardClick={handleCardClick} />;
 };
 
 export default KineticScrollGallery;
-

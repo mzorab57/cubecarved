@@ -1,11 +1,10 @@
-import { Home, Building2, Sofa, Palette, Ruler, Sparkles } from 'lucide-react';
 import AnimatedText from '../components/AnimatedText';
 import { useEffect } from 'react';
 import useServicesStore from '../store/services';
+import { siteContent } from '../data/siteData';
 
 export default function Services() {
   const { items: services, loading, error, fetchAll } = useServicesStore();
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://nergizkhalid.com/api-nergiz';
 
   useEffect(() => {
     fetchAll();
@@ -13,8 +12,7 @@ export default function Services() {
 
   const getImageSrc = (img) => {
     if (!img) return '/images/color.png';
-    if (img.startsWith('http')) return img;
-    return `${API_BASE_URL}/${img}`;
+    return img;
   };
 
   return (
@@ -32,7 +30,7 @@ export default function Services() {
               className="text-4xl sm:text-5xl font-light text-gray-100 mb-4"
             />
             <p data-aos="fade-up" data-aos-delay="200" className="text-xl text-gray-400 max-w-2xl mx-auto font-light ">
-              From concept to completion, we cover all types of design projects with creativity, precision, and care
+              Integrated engineering services that connect design quality with dependable execution.
             </p>
             {loading && (
               <p className="mt-4 text-gray-400">Loading services...</p>
@@ -51,24 +49,20 @@ export default function Services() {
                   data-aos-delay={idx * 100}
                   className="group grayscale hover:grayscale-0  rounded p-4 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-700 hover:border-gray-200 hover:-translate-y-2"
                 >
-                  {/* Image */}
                   <img
                     src={getImageSrc(service.image)}
                     alt={service.name}
                     className="w-full h-32  object-cover rounded mb-6 group-hover:scale-110 group-hover:rotate-6  transition-all duration-300 shadow-lg brightness-75"
                   />
 
-                  {/* Title */}
                   <h3 className="text-2xl font-light text-gray-100 mb-4">
-                    {service.name}
+                    {service.title || service.name}
                   </h3>
 
-                  {/* Description */}
                   <p className="text-gray-400 mb-6 font-light leading-relaxed">
                     {service.description}
                   </p>
 
-                  {/* Optional features if available */}
                   {Array.isArray(service.features) && service.features.length > 0 && (
                     <div className="space-y-2">
                       {service.features.map((feature, featureIdx) => (
@@ -98,48 +92,27 @@ export default function Services() {
               Our Process
             </h2>
             <p data-aos="fade-up" data-aos-delay="100" className="text-xl text-gray-400 max-w-2xl mx-auto font-light">
-              A streamlined approach to bring your vision to life
+              A structured workflow from initial planning to final handover.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                step: '01',
-                title: 'Consultation',
-                description: 'Understanding your vision, needs, and budget through detailed discussions'
-              },
-              {
-                step: '02',
-                title: 'Design & Planning',
-                description: 'Creating concepts, mood boards, and detailed plans tailogray to  font-lightyour space'
-              },
-              {
-                step: '03',
-                title: 'Material Selection',
-                description: 'Choosing premium materials, colors, and finishes that match your style'
-              },
-              {
-                step: '04',
-                title: 'Execution',
-                description: 'Bringing the design to life with precision and quality craftsmanship'
-              }
-            ].map((process, idx) => (
+            {siteContent.process.map((process, idx) => (
               <div
-                key={idx}
+                key={process}
                 data-aos="fade-up"
                 data-aos-delay={idx * 100}
                 className="relative"
               >
                 <div className="bg-transparent border h-64 border-white text-white px-8 py-2 text-lg font-light hover:bg-white hover:text-black transition-all duration-300">
                   <div className="text-6xl font-bold text-gray-200 mb-4">
-                    {process.step}
+                    {String(idx + 1).padStart(2, '0')}
                   </div>
                   <h3 className="text-xl font-bold text-gray-100 mb-3">
-                    {process.title}
+                    {process}
                   </h3>
                   <p className="text-gray-400 leading-relaxed">
-                    {process.description}
+                    {siteContent.futureGoals.items[idx] || 'Professional coordination at every project stage.'}
                   </p>
                 </div>
                 {idx < 3 && (
@@ -158,7 +131,7 @@ export default function Services() {
               Ready to Start Your Project?
             </h2>
             <p className="text-lg font-light text-gray-300 mb-10">
-              Let's discuss how we can transform your space into something extraordinary
+              Design, execution, and supervision aligned in one clear process.
             </p>
             <a
               href="/contact"
