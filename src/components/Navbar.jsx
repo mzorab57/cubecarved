@@ -63,17 +63,17 @@ export default function Navbar() {
     <nav
       className={`fixed w-full font-light z-50 transition-all duration-300 ${
         scrolled
-          ? `backdrop-blur-3xl ${isVisible ? 'translate-y-0  ' : '-translate-y-full'}`
+          ? `backdrop-blur-3xl bg-gradient-to-r from-[#7C3AED]/10 via-[#4F46E5]/10 to-[#60A5FA]/10 ${isVisible ? 'translate-y-0  ' : '-translate-y-full'}`
           : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
-        <div className="flex justify-between items-center h-24 md:h-28 lg:h-32">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1 ">
+        <div className="flex justify-between items-center ">
           <Link onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} to="/" className="flex items-center space-x-2 group">
             <div className="    flex items-center justify-center transform group-hover:rotate-6 transition-transform duration-300">
              <img src={`${
               scrolled ? '/logo.png' : '/logo.png'
-            }`} alt={companyName} className="w-24 md:w-28 lg:w-32" />
+            }`} alt={companyName} className="w-16 " />
             </div>
            
           </Link>

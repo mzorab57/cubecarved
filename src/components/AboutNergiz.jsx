@@ -41,7 +41,7 @@ const AboutNergiz = () => {
       case 1:
         return '/images/aboutNergiz.JPG';
       case 2:
-        return '/images/about2.PNG';
+        return '/images/about2.jpeg';
       case 3:
         return '/images/servicebg.PNG';
       default:
@@ -102,7 +102,7 @@ const AboutNergiz = () => {
                   rows={8}
                   cols={6}
                   tileSize={60}
-                  imageUrl="/images/about2.PNG"
+                  imageUrl="/images/about2.jpeg"
                   backgroundColor="transparent"
                 />
               </div>
