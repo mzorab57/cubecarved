@@ -39,13 +39,13 @@ const AboutNergiz = () => {
   const getImageUrl = () => {
     switch (activeText) {
       case 1:
-        return '/images/aboutNergiz.JPG';
+        return '/logon.png';
       case 2:
         return '/images/about2.jpeg';
       case 3:
-        return '/images/servicebg.PNG';
+        return '/images/comer.png';
       default:
-        return '/images/aboutNergiz.JPG';
+        return '/logon.png';
     }
   };
 
@@ -84,7 +84,7 @@ const AboutNergiz = () => {
                   rows={8}
                   cols={6}
                   tileSize={60}
-                  imageUrl="/images/aboutNergiz.JPG"
+                  imageUrl="/logon.png"
                   backgroundColor="transparent"
                 />
               </div>
@@ -120,7 +120,7 @@ const AboutNergiz = () => {
                   rows={8}
                   cols={6}
                   tileSize={60}
-                  imageUrl="/images/servicebg.PNG"
+                  imageUrl="/images/comer.png"
                   backgroundColor="transparent"
                 />
               </div>

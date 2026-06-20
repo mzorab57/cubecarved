@@ -16,7 +16,7 @@ const StartProject = () => {
           <Link
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             to="/contact"
-            className="inline-flex items-center space-x-2 bg-transparent border border-white text-white px-8 py-2 text-lg font-light hover:bg-white hover:text-black transition-all duration-300"
+            className="inline-flex items-center space-x-2 bg-transparent border border-white/50  px-8 py-2 text-lg font-light hover:bg-[#7C3AED]/50 hover:text-white text-[#7C3AED] transition-all duration-300"
           >
             <span>Start Your Project</span>
             <ArrowRight className="w-6 h-6" />

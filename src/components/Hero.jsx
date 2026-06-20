@@ -1,8 +1,6 @@
-import { ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import videoMp4 from '/videos/hero.mp4';
 import videoWebm from '/videos/hero.webm';
-import { companyName, siteContent } from '../data/siteData';
+import { siteContent } from '../data/siteData';
 
 const Hero = () => {
   return (

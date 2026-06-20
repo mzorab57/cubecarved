@@ -128,7 +128,7 @@ export const siteContent = {
 
 export const contactInfo = {
   email: 'info@cubecarved.com',
-  phone: '+964 750 000 0000',
+  phone: '+964 750 655 8883',
   address: 'Erbil, Iraq',
   schedule: 'Meetings by prior arrangement',
   hours: 'Opening hours: Sun-Thu from 09:00 to 17:00',
@@ -136,8 +136,8 @@ export const contactInfo = {
   mapEmbedUrl:
     'https://www.google.com/maps?q=Erbil%2C%20Iraq&z=12&output=embed',
   social: {
-    instagram: '#',
-    facebook: '#',
+    instagram: 'https://www.instagram.com/cubecarved?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
+    facebook: 'https://www.facebook.com/profile.php?id=61585844889209',
     linkedin: '#',
   },
 };

@@ -10,10 +10,11 @@ const Card = ({ title, description, category, src, id, onCardClick }) => {
     <div className="h-screen flex items-center justify-center sticky top-0 md:p-0 px-4">
       <div
         className="relative flex flex-col h-[500px] w-[700px] py-12 px-10 md:px-12  
-        rotate-0 md:h-[500px] md:w-[1000px] lg:h-[700px] lg:w-[1190px] items-center justify-center mx-auto 
+        rotate-0 md:h-[500px] md:w-[1000px] lg:h-[700px] lg:w-[1190px] items-start lg:items-center justify-center mx-auto 
         shadow-md pr-3 pl-3 pt-3 pb-4 bg-black/20 backdrop-blur-sm cursor-pointer hover:bg-black/30 transition-all duration-300"
         onClick={() => onCardClick(id)}
       >
+        <div className='bg-gradient-to-t from-[#7C3AED]/30 via-[#5C2AED]/15 to-[#42228B]/5 absolute bottom-0 left-0 z-10 w-full h-56'></div>
         <span className="font-bold relative text-5xl md:text-7xl mt-5">
           <span
             className="relative z-10 font-light tracking-tight text-white"
@@ -22,13 +23,13 @@ const Card = ({ title, description, category, src, id, onCardClick }) => {
           </span>
         </span>
         <div
-          className="text-lg md:text-2xl font-light text-center mb-0 z-50 mt-2 lowercase tracking-wide text-gray-400"
+          className="text-lg md:text-2xl text-start font-light  mb-0 z-50 mt-2 lowercase tracking-wide text-gray-400"
           style={{ lineHeight: 1.4 }}
         >
           {category}
         </div>
         <div
-          className="text-sm md:text-lg font-light text-center mb-0 z-50 mt-4 text-gray-300 max-w-md"
+          className="text-sm md:text-lg font-light text-start mb-0 z-50 mt-4 text-gray-300 max-w-md"
           style={{ lineHeight: 1.4 }}
         >
           {description}
@@ -45,7 +46,7 @@ const Card = ({ title, description, category, src, id, onCardClick }) => {
             />
           ) : (
             <img
-              className="w-full h-full rounded object-cover opacity-80 brightness-50"
+              className="w-full h-full rounded object-cover opacity-80 brightness-50 "
               src={toAssetUrl(src)}
               alt={`${title} - ${category} project`}
               onError={(e) => {
@@ -62,7 +63,7 @@ const Card = ({ title, description, category, src, id, onCardClick }) => {
 const CardsParallax = ({ items, onCardClick }) => {
   const limitedItems = Array.isArray(items) ? items.slice(0, 9) : [];
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen ">
       {limitedItems.map((project, i) => (
         <Card key={`p_${i}`} {...project} i={i} onCardClick={onCardClick} />
       ))}

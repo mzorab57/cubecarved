@@ -20,7 +20,7 @@ export default function Home() {
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-14">
             {siteContent.featuredProjects.map((project) => (
-              <div key={project} className="border border-white/10 p-6 bg-white/5">
+              <div key={project} className="  hover:border-[#7C3AED]/50 p-6 bg-[#7C3AED]/10">
                 <p className="text-xl font-light text-gray-100">{project}</p>
               </div>
             ))}
@@ -30,7 +30,7 @@ export default function Home() {
       <KineticScrollGallery />
       <WhyChooseUs />
       <ServicesTitle />
-      <section className="py-24 bg-black">
+      <section className="py-24 ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
@@ -42,7 +42,7 @@ export default function Home() {
                 {siteContent.process.map((step, index) => (
                   <div
                     key={step}
-                    className="border border-white/10 bg-white/5 px-6 py-5 flex items-center gap-5"
+                    className=" border-white/10 bg-[#7C3AED]/10  px-6 py-5 flex items-center gap-5"
                   >
                     <span className="text-3xl font-light text-gray-500">
                       {String(index + 1).padStart(2, '0')}
@@ -62,7 +62,7 @@ export default function Home() {
               </p>
               <div className="space-y-4">
                 {siteContent.futureGoals.items.map((goal) => (
-                  <div key={goal} className="border border-white/10 bg-white/5 px-6 py-5">
+                  <div key={goal} className=" border-white/10 bg-[#7C3AED]/10  px-6 py-5">
                     <span className="text-xl font-light text-gray-100">{goal}</span>
                   </div>
                 ))}
@@ -71,7 +71,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <StartProject />
+      {/* <StartProject /> */}
     </div>
   );
 }

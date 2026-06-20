@@ -31,10 +31,10 @@ const WhyChooseUs = () => {
                 key={feature.title}
                 data-aos="fade-up"
                 data-aos-delay={idx * 100}
-                className="group p-8 bg-white/5 rounded-2xl hover:shadow-2xl transition-all duration-300 border border-gray-800 hover:border-gray-200 hover:-translate-y-2"
+                className="group p-8 bg-white/5  hover:shadow-2xl transition-all duration-300 border border-[#7C3AED]/30  hover:border-[#7C3AED]/50  hover:-translate-y-2"
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-gray-100 to-gray-300 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg">
-                  <Icon className="w-8 h-8 text-black" />
+                <div className="w-16 h-16 bg-gradient-to-r from-[#7C3AED]/10 via-[#4F46E5]/10 to-[#60A5FA]/10 text-white  rounded-xl flex items-center justify-center mb-6  transition-all duration-300 shadow-lg">
+                  <Icon className="w-8 h-8 " />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-100 mb-3">{feature.title}</h3>
                 <p className="text-gray-400 leading-relaxed">{feature.description}</p>

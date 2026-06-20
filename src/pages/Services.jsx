@@ -18,7 +18,7 @@ export default function Services() {
   return (
     <div >
       <section className="relative   overflow-hidden ">
-        <div className=" aspect-square lg:aspect-[3.6/2] inset-0 bg-[url('/images/servicebg.PNG')] bg-cover bg-center  opacity-40"></div>
+        <div className=" aspect-square lg:aspect-[3.6/2] inset-0 bg-[url('/images/about.png')] bg-cover bg-center  opacity-40"></div>
       </section>
 
        <div className="h-14 w-full bg-gradient-to-t from-[#121212] via-[#0e0e0e] to-transparent -translate-y-8"></div>
