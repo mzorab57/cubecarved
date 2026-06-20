@@ -18,7 +18,7 @@ export default function Contact() {
         <div   className="absolute aspect-auto lg:aspect-[5/4] inset-0 bg-[url('/images/contact.png')] bg-cover bg-center  opacity-40"></div>
       </section>
       <section className="relative overflow-hidden ">
-        <div className=" aspect-square lg:hidden lg:aspect-[5.5/3] inset-0 bg-[url('/images/aboutabg.JPG')] bg-cover bg-center  opacity-40"></div>
+        <div className=" aspect-square lg:hidden lg:aspect-[5.5/3] inset-0 bg-[url('/images/contact.png')] bg-cover bg-center  opacity-40"></div>
       </section>
        <div className="h-14 w-full bg-gradient-to-t from-[#121212] via-[#0e0e0e] to-transparent -translate-y-8"></div>
   

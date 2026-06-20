@@ -73,19 +73,19 @@ export const siteContent = {
     {
       title: 'Execution',
       description: 'Professional execution support that turns approved concepts into durable and high-quality built spaces.',
-      image: '/images/servicebg.PNG',
+      image: '/images/g7.JPG',
       features: ['Site follow-up', 'Quality control', 'Timely delivery'],
     },
     {
       title: 'Interior & Exterior Decoration',
       description: 'Integrated decoration solutions for residential, commercial, hospitality, and public environments.',
-      image: '/images/about2.PNG',
+      image: '/images/about2.jpeg',
       features: ['Interior detailing', 'Facade enhancement', 'Material selection'],
     },
     {
       title: 'Comprehensive Engineering Supervision',
       description: 'Full engineering supervision to maintain safety, precision, and compliance during all project stages.',
-      image: '/images/aboutabg.JPG',
+      image: '/images/g8.JPG',
       features: ['Site supervision', 'Engineering review', 'Execution reporting'],
     },
   ],
